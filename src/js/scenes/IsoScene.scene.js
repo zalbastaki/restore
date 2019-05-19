@@ -26,7 +26,6 @@ class IsoScene extends Phaser.Scene {
 
     create() {
         this.iso.projector.origin.setTo(0.5, 0.3);
-        this.isoGroup = this.add.group();
 
         this.scale.on('resize', this.onScaleResize, this);
 

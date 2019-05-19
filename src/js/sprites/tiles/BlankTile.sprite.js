@@ -1,7 +1,7 @@
-import Tile from './Tile.sprite.js';
+import TileSprite from './TileSprite.js';
 import BLANK_TILE_ASSET from '../../../assets/tiles/blank.png';
 
-class BlankTile extends Tile {
+class BlankTile extends TileSprite {
     constructor(scene, x, y, frame) {
         super(scene, x, y, 'BLANK_TILE', frame);
     }

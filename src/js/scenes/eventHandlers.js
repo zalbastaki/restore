@@ -1,5 +1,6 @@
+import harvestFloraFeature from './features/harvestFlora.feature.js';
 import hoverIndicatorFeature from './features/hoverIndicator.feature.js';
-import placePurchasedItemFeature from './features/placePurchasedItem.feature.js';
+import plantFloraFeature from './features/plantFlora.feature.js';
 import tillBareTileFeature from './features/tillBareTile.feature.js';
 
 /**
@@ -11,7 +12,6 @@ import tillBareTileFeature from './features/tillBareTile.feature.js';
  *         onHover: 'meeza soil hoooover',
  *     },
  * });
- * 
  * // {
  * //     onHover: 'im a generic hover',
  * //     onSoilTileClick: 'meeza soil click',
@@ -82,9 +82,10 @@ function merge(arrOfHandlers) {
 }
 
 const eventHandlers = merge([
-    prepare(hoverIndicatorFeature),
+    prepare(harvestFloraFeature),
+    prepare(plantFloraFeature),
     prepare(tillBareTileFeature),
-    prepare(placePurchasedItemFeature),
+    prepare(hoverIndicatorFeature),
 ]);
 
 export default eventHandlers;

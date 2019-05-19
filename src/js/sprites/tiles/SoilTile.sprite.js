@@ -1,7 +1,7 @@
-import Tile from './Tile.sprite.js';
+import TileSprite from './TileSprite.js';
 import SOIL_TILE_ASSET from '../../../assets/tiles/soil.png';
 
-class SoilTile extends Tile {
+class SoilTile extends TileSprite {
     constructor(scene, x, y, frame) {
         super(scene, x, y, 'SOIL_TILE', frame);
     }

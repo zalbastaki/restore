@@ -1,14 +1,11 @@
 import IsoScene from './IsoScene.scene.js';
-import ASSETS from '../sprites/ASSETS.js';
 import features from './eventHandlers.js';
-import Tile from '../sprites/tiles/Tile.sprite.js';
-import Tree from '../sprites/trees/Tree.sprite.js';
+import ASSETS from '../sprites/ASSETS.js';
+import ANIMATIONS from '../sprites/ANIMATIONS.js';
+import BASE_DURATION from '../sprites/ANIMATIONS_BASE_DURATION.js';
+import TileSprite from '../sprites/tiles/TileSprite.js';
+import FloraSprite from '../sprites/flora/FloraSprite.js';
 import BareTile from '../sprites/tiles/BareTile.sprite.js';
-import OakTree from '../sprites/trees/OakTree.sprite.js';
-
-const itemToSprite = {
-    OakTree,
-};
 
 class MainScene extends IsoScene {
     constructor() {
@@ -19,15 +16,22 @@ class MainScene extends IsoScene {
 
     preload() {
         super.preload();
-        ASSETS.forEach(asset => this.load[asset.type](asset.key, asset.url));
+        // load animations
+        ASSETS.forEach(asset => this.load[asset.type](asset.key, asset.url, asset.dimensions));
     }
-
+    
     create() {
         super.create();
-        
+        // create animations
+        ANIMATIONS.forEach(animation => this.anims.create({
+            key: animation.key,
+            frames: this.anims.generateFrameNumbers(animation.assetKey),
+            duration: BASE_DURATION,
+        }));
+        // draw floor
         for (let x = -32; x < 32; x += 1) {
             for (let y = -32; y < 32; y += 1) {
-                this.add.existing(new BareTile(this, x * 38, y * 38, this.isoGroup));
+                this.add.existing(new BareTile(this, x * 38, y * 38));
             }
         }
     }
@@ -37,17 +41,17 @@ class MainScene extends IsoScene {
             features[eventName].forEach(fn => fn.call(this, sprite));
         }
 
-        if (sprite instanceof Tile) {
+        if (sprite instanceof TileSprite) {
             const tileEventName = eventName.replace(/^on/, 'onTile');
             if (features[tileEventName]) {
                 features[tileEventName].forEach(fn => fn.call(this, sprite));
             }
         }
 
-        if (sprite instanceof Tree) {
-            const treeEventName = eventName.replace(/^on/, 'onTree');
-            if (features[treeEventName]) {
-                features[treeEventName].forEach(fn => fn.call(this, sprite));
+        if (sprite instanceof FloraSprite) {
+            const floraEventName = eventName.replace(/^on/, 'onFlora');
+            if (features[floraEventName]) {
+                features[floraEventName].forEach(fn => fn.call(this, sprite));
             }
         }
 
@@ -57,11 +61,10 @@ class MainScene extends IsoScene {
         }
     }
 
-    onPurchase(item) {
-        const ItemSprite = itemToSprite[item.className];
-        this.itemPurchased = new ItemSprite(this, Infinity, Infinity, this.isoGroup);
-        this.itemPurchased.alpha = 0.75;
-        this.add.existing(this.itemPurchased);
+    onAction(actionName, params) {
+        if (features[actionName]) {
+            features[actionName].forEach(fn => fn.call(this, ...params));
+        }
     }
 }
 
