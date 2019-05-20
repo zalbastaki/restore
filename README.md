@@ -2,6 +2,7 @@
 
 ## To run the program:
 
+- Download Node.js from [here](https://nodejs.org/en/)
 - Go to dist/
 - Open index.html
 
