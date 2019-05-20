@@ -24,4 +24,5 @@ Note: The project is also available live [here](https://restore.netlify.com)
 ## To view the source code:
 
 - The source code is available in the src folder.
+
 Note: I changed the grow times for tomato and strawberry and increased the initial number of coins to enable easy testing. The real values are currently commented out.
