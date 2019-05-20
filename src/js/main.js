@@ -17,7 +17,8 @@ class GUI extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            coins: 10,
+            //coins: 10,
+            coins: 1000,
             offset: 0,
             marketOpen: false,
             inspectFlora: null,
