@@ -21,3 +21,5 @@ npm start
 ```
 
 - The project should now be available at localhost:5000
+
+Note: The project is also available live [here](https://hardcore-bhaskara-f8a8e0.netlify.com/)
