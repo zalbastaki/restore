@@ -196,7 +196,6 @@ function Market(props) {
                                 setOffset(0);
                                 setActiveCategory(category);
                                 setActiveItem(category.items[0]);
-                                event.stopPropagation();
                             }}
                         >
                             {category.name}
@@ -208,7 +207,6 @@ function Market(props) {
                     <ArrowButton
                         onClick={() => {
                             setOffset(offset - 1);
-                            event.stopPropagation();
                         }}
                         disabled={offset === 0}
                     >
@@ -222,7 +220,6 @@ function Market(props) {
                             <ItemDetailsButton
                                 onClick={() => {
                                     setActiveItem(item);
-                                    event.stopPropagation();
                                 }}
                                 onMouseOver={() => setActiveItem(item)}
                             >
@@ -236,7 +233,6 @@ function Market(props) {
                                 disabled={props.coins < item.price}
                                 onClick={() => {
                                     props.onPurchaseFlora(item);
-                                    event.stopPropagation();
                                 }}
                             >
                                 <Coin /> {item.price}
@@ -247,7 +243,6 @@ function Market(props) {
                     <ArrowButton
                         onClick={() => {
                             setOffset(offset + 1);
-                            event.stopPropagation();
                         }}
                         disabled={offset === activeCategory.items.length - pageSize}
                     >

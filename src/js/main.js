@@ -37,10 +37,10 @@ class GUI extends React.Component {
             scene: MainScene,
         });
         window.addEventListener('resize', this.onResize.bind(this));
-        // guiDiv.addEventListener('mousedown', (event) => event.stopPropagation() || false);
-        // guiDiv.addEventListener('mouseup', (event) => event.stopPropagation() || false);
-        // guiDiv.addEventListener('touchstart', (event) => event.stopPropagation() || false);
-        // guiDiv.addEventListener('touchend', (event) => event.stopPropagation() || false);
+        guiDiv.addEventListener('mousedown', (event) => event.stopPropagation() || false);
+        guiDiv.addEventListener('mouseup', (event) => event.stopPropagation() || false);
+        guiDiv.addEventListener('touchstart', (event) => event.stopPropagation() || false);
+        guiDiv.addEventListener('touchend', (event) => event.stopPropagation() || false);
     }
 
     setState(updater, callback) {

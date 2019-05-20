@@ -21,7 +21,6 @@ function MarketButton(props) {
         <FloatingButton
             background="#ccf1ff"
             onClick={() => {
-                event.stopPropagation();
                 props.onClick();
             }}
         >
