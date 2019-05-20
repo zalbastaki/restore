@@ -108,6 +108,23 @@ const ItemDetailsButton = styled.button`
     border: none;
     margin: 0;
     padding: 0;
+    transform: scale(1);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    outline: none;
+
+    &:hover,
+    &:active {
+        transform: scale(1.25);
+    }
+`;
+
+const ItemPreview = styled.img`
+    width: 100%;
+    height: auto;
+    max-width: 50px;
+    image-rendering: auto;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
 `;
 
 const ArrowButton = styled.button`
@@ -120,8 +137,9 @@ const ArrowButton = styled.button`
     color: white;
     font-size: 2rem;
     font-weight: bold;
-    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     align-self: center;
+    transform: scale(1);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 
     &:hover {
         transform: scale(1.25);
@@ -140,10 +158,6 @@ const BuyButton = styled.button`
     padding: 5px 15px;
     font-size: 1.25rem;
     cursor: pointer;
-
-    &:hover {
-        transform: scale(1.25);
-    }
 
     &:disabled {
         filter: grayscale(50%);
@@ -201,8 +215,11 @@ function Market(props) {
                         <ItemCard key={item.id}>
                             {item.name}
 
-                            <ItemDetailsButton onClick={() => setActiveItem(item)}>
-                                <img
+                            <ItemDetailsButton
+                                onClick={() => setActiveItem(item)}
+                                onMouseOver={() => setActiveItem(item)}
+                            >
+                                <ItemPreview
                                     src={item.featuredImageUrl}
                                     alt={item.name}
                                 />
@@ -227,15 +244,15 @@ function Market(props) {
             </Tabs>
 
             <DetailsPanel>
-                {activeItem.name}
+                <h1>{activeItem.name}</h1>
                 <br/>
-                Price: <Coin /> {activeItem.price} coins
+                <strong>Price</strong> <Coin /> {activeItem.price} coins
                 <br/>
-                Resale: <Coin /> {activeItem.resale} coins
+                <strong>Resale</strong> <Coin /> {activeItem.resale} coins
                 <br/>
-                Grows In: {activeItem.growsIn < 60 * 60 * 1000 ? `${activeItem.growsIn / (60 * 1000)} mins` : `${activeItem.growsIn / (60 * 60 * 1000)} hrs`}
+                <strong>Grows In</strong> {activeItem.growsIn < 60 * 60 * 1000 ? `${activeItem.growsIn / (60 * 1000)} mins` : `${activeItem.growsIn / (60 * 60 * 1000)} hrs`}
                 <br/>
-                Absorption: {activeItem.absorption} lbs per year
+                <strong>Absorption</strong> {activeItem.absorption} lbs per year
             </DetailsPanel>
         </Container>
     );

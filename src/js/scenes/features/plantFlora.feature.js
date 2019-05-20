@@ -1,14 +1,26 @@
 import FLORA from '../../FLORA.js';
-import MagnoliaTree from '../../sprites/flora/MagnoliaTree.sprite.js';
 import CherryTree from '../../sprites/flora/CherryTree.sprite.js';
+import MagnoliaTree from '../../sprites/flora/MagnoliaTree.sprite.js';
 import OakTree from '../../sprites/flora/OakTree.sprite.js';
+import BlueberryPlant from '../../sprites/flora/BlueberryPlant.sprite.js';
+import CatnipPlant from '../../sprites/flora/CatnipPlant.sprite.js';
+import StrawberryPlant from '../../sprites/flora/StrawberryPlant.sprite.js';
+import SunflowerPlant from '../../sprites/flora/SunflowerPlant.sprite.js';
+import SweetPeaPlant from '../../sprites/flora/SweetPeaPlant.sprite.js';
 import TomatoPlant from '../../sprites/flora/TomatoPlant.sprite.js';
+import WatermelonPlant from '../../sprites/flora/WatermelonPlant.sprite.js';
 
 const floraSprite = {
-    MagnoliaTree,
     CherryTree,
+    MagnoliaTree,
     OakTree,
+    BlueberryPlant,
+    CatnipPlant,
+    StrawberryPlant,
+    SunflowerPlant,
+    SweetPeaPlant,
     TomatoPlant,
+    WatermelonPlant,
 };
 
 const plantFlora = {

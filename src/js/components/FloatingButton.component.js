@@ -2,10 +2,6 @@ import styled from 'styled-components';
 
 const FloatingButton = styled.button`
     position: absolute;
-    right: 24px;
-    bottom: 24px;
-    width: 96px;
-    height: 96px;
     padding: 0;
     margin: 0;
     display: inline-grid;
@@ -19,14 +15,30 @@ const FloatingButton = styled.button`
     outline: none;
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     transform: scale(1);
+    ${({ top }) => top && `top: 24px;`}
+    ${({ right }) => right && `right: 24px;`}
+    ${({ bottom }) => bottom && `bottom: 24px;`}
+    ${({ left }) => left && `left: 24px;`}
+    width: ${size};
+    height: ${size};
 
     &:hover {
         transform: scale(1.25);
     }
 `;
 
+function size({ size }) {
+    return {
+        lg: '96px',
+        sm: '48px',
+    }[size]
+}
+
 FloatingButton.defaultProps = {
+    size: 'lg',
     background: 'white',
+    bottom: true,
+    right: true,
 };
 
 export default FloatingButton;

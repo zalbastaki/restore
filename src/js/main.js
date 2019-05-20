@@ -8,6 +8,7 @@ import OffsetDisplay from './components/OffsetDisplay.component.js';
 import InspectFlora from './components/InspectFlora.component.js';
 import MarketButton from './components/MarketButton.component.js';
 import Market from './components/Market.component.js';
+import Music from './components/Music.component.js';
 
 const guiDiv = document.getElementById('gui');
 const gameDiv = document.getElementById('game');
@@ -36,6 +37,10 @@ class GUI extends React.Component {
             scene: MainScene,
         });
         window.addEventListener('resize', this.onResize.bind(this));
+        guiDiv.addEventListener('mousedown', (event) => event.stopPropagation() || false);
+        guiDiv.addEventListener('mouseup', (event) => event.stopPropagation() || false);
+        guiDiv.addEventListener('touchstart', (event) => event.stopPropagation() || false);
+        guiDiv.addEventListener('touchend', (event) => event.stopPropagation() || false);
     }
 
     setState(updater, callback) {
@@ -70,6 +75,7 @@ class GUI extends React.Component {
             <Fragment>
                 <CoinDisplay value={coins} />
                 <OffsetDisplay value={offset} />
+                <Music />
                 <InspectFlora value={inspectFlora} />
                 <MarketButton onClick={() => this.setState({ marketOpen: !marketOpen })} />
                 <Market

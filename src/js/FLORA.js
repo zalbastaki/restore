@@ -2,7 +2,7 @@ import TOMATO_PLANT_URL from '../assets/market/tomato.png';
 import STRAWBERRY_PLANT_URL from '../assets/market/strawberry.png';
 import SUNFLOWER_PLANT_URL from '../assets/market/sunflower.png';
 import BLUEBERRY_PLANT_URL from '../assets/market/blueberry.png';
-import SWEAT_PEA_PLANT_URL from '../assets/market/peas.png';
+import SWEET_PEA_PLANT_URL from '../assets/market/peas.png';
 import WATERMELON_PLANT_URL from '../assets/market/watermelon.png';
 import CATNIP_PLANT_URL from '../assets/market/catnip.png';
 import MAGNOLIA_PLANT_URL from '../assets/market/magnolia.png';
@@ -54,13 +54,13 @@ const FLORA = {
     },
     SweetPeaPlant: {
         id: 4,
-        name: 'Sweat Pea',
-        className: 'SweatPeaPlant',
+        name: 'Sweet Pea',
+        className: 'SweetPeaPlant',
         price: 24,
         resale: 20,
         growsIn: 240 * MINUTES_MS,
         absorption: 8,
-        featuredImageUrl: SWEAT_PEA_PLANT_URL,
+        featuredImageUrl: SWEET_PEA_PLANT_URL,
     },
     WatermelonPlant: {
         id: 5,

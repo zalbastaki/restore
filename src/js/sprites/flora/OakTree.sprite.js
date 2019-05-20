@@ -9,9 +9,20 @@ class OakTree extends FloraSprite {
 
 OakTree.ASSETS = [
     {
-        type: 'image',
+        type: 'spritesheet',
         key: 'OAK_TREE',
         url: OAK_TREE_ASSET,
+        dimensions: {
+            frameWidth: 70,
+            frameHeight: 74,
+        },
+    },
+];
+
+OakTree.ANIMATIONS = [
+    {
+        key: 'OAK_TREE_GROWTH',
+        assetKey: 'OAK_TREE',
     },
 ];
 

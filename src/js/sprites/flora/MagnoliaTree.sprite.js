@@ -9,9 +9,20 @@ class MagnoliaTree extends FloraSprite {
 
 MagnoliaTree.ASSETS = [
     {
-        type: 'image',
+        type: 'spritesheet',
         key: 'MAGNOLIA_TREE',
         url: MAGNOLIA_TREE_ASSET,
+        dimensions: {
+            frameWidth: 70,
+            frameHeight: 74,
+        },
+    },
+];
+
+MagnoliaTree.ANIMATIONS = [
+    {
+        key: 'MAGNOLIA_TREE_GROWTH',
+        assetKey: 'MAGNOLIA_TREE',
     },
 ];
 
