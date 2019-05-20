@@ -40,6 +40,7 @@ function Music(props) {
                         music.current.pause();
                     }
                     setMuted(!isMuted);
+                    event.stopPropagation();
                 }}
             >
                 <Icon {...(isMuted ? unmuteProps : muteProps)} />

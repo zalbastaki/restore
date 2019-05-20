@@ -196,6 +196,7 @@ function Market(props) {
                                 setOffset(0);
                                 setActiveCategory(category);
                                 setActiveItem(category.items[0]);
+                                event.stopPropagation();
                             }}
                         >
                             {category.name}
@@ -205,7 +206,10 @@ function Market(props) {
 
                 <TabsBody>
                     <ArrowButton
-                        onClick={() => setOffset(offset - 1)}
+                        onClick={() => {
+                            setOffset(offset - 1);
+                            event.stopPropagation();
+                        }}
                         disabled={offset === 0}
                     >
                         ↢
@@ -216,7 +220,10 @@ function Market(props) {
                             {item.name}
 
                             <ItemDetailsButton
-                                onClick={() => setActiveItem(item)}
+                                onClick={() => {
+                                    setActiveItem(item);
+                                    event.stopPropagation();
+                                }}
                                 onMouseOver={() => setActiveItem(item)}
                             >
                                 <ItemPreview
@@ -227,7 +234,10 @@ function Market(props) {
                             
                             <BuyButton
                                 disabled={props.coins < item.price}
-                                onClick={() => props.onPurchaseFlora(item)}
+                                onClick={() => {
+                                    props.onPurchaseFlora(item);
+                                    event.stopPropagation();
+                                }}
                             >
                                 <Coin /> {item.price}
                             </BuyButton>
@@ -235,7 +245,10 @@ function Market(props) {
                     ))}
 
                     <ArrowButton
-                        onClick={() => setOffset(offset + 1)}
+                        onClick={() => {
+                            setOffset(offset + 1);
+                            event.stopPropagation();
+                        }}
                         disabled={offset === activeCategory.items.length - pageSize}
                     >
                         ↣
