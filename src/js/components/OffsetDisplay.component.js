@@ -25,9 +25,9 @@ const OffsetIndicator = styled.div`
 `;
 
 const Label = styled.span`
+    margin: auto;
     color: black;
     writing-mode: vertical-rl;
-    margin: auto;
 `;
 
 const AVERAGE_EMISSION = 20000;
@@ -38,7 +38,7 @@ function OffsetDisplay(props) {
             <OffsetIndicator 
                 height={Math.min((props.value / AVERAGE_EMISSION) * 100, 100) + '%'}
             />
-            <Label>Carbon Offset Meter</ Label>
+            <Label>Carbon Offset Meter</Label>
         </Container>
     );
 }

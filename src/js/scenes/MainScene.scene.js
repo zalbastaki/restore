@@ -5,13 +5,14 @@ import ANIMATIONS from '../sprites/ANIMATIONS.js';
 import BASE_DURATION from '../sprites/ANIMATIONS_BASE_DURATION.js';
 import TileSprite from '../sprites/tiles/TileSprite.js';
 import FloraSprite from '../sprites/flora/FloraSprite.js';
-import BareTile from '../sprites/tiles/BareTile.sprite.js';
+import {persistGameState, hydrateGameState} from '../storage.js';
 
 class MainScene extends IsoScene {
     constructor() {
         super({
             key: 'MainScene',
         });
+        setInterval(() => persistGameState(this), 5000);
     }
 
     preload() {
@@ -28,12 +29,9 @@ class MainScene extends IsoScene {
             frames: this.anims.generateFrameNumbers(animation.assetKey),
             duration: BASE_DURATION,
         }));
-        // draw floor
-        for (let x = -32; x < 32; x += 1) {
-            for (let y = -32; y < 32; y += 1) {
-                this.add.existing(new BareTile(this, x * 38, y * 38));
-            }
-        }
+        
+        const gameState = hydrateGameState.call(this);
+        gameState.sprites.forEach((sprite) => this.add.existing(sprite));
     }
 
     handleEvent(eventName, sprite) {

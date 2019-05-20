@@ -3,14 +3,14 @@ import SWEETPEA_PLANT_ASSET from '../../../assets/flora/sweetpea.png';
 
 class SweetPeaPlant extends FloraSprite {
     constructor(scene, x, y, props) {
-        super(scene, x, y, 'SWEET_PEA_PLANT', props);
+        super(scene, x, y, 'SWEETPEA_PLANT', props);
     }
 }
 
 SweetPeaPlant.ASSETS = [
     {
         type: 'spritesheet',
-        key: 'SWEET_PEA_PLANT',
+        key: 'SWEETPEA_PLANT',
         url: SWEETPEA_PLANT_ASSET,
         dimensions: {
             frameWidth: 70,
@@ -21,8 +21,8 @@ SweetPeaPlant.ASSETS = [
 
 SweetPeaPlant.ANIMATIONS = [
     {
-        key: 'SWEET_PEA_PLANT_GROWTH',
-        assetKey: 'SWEET_PEA_PLANT',
+        key: 'SWEETPEA_PLANT_GROWTH',
+        assetKey: 'SWEETPEA_PLANT',
     },
 ];
 

@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import React, { Fragment, useState } from 'react';
+import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import MainScene from './scenes/MainScene.scene.js';
 import CATEGORIES from './CATEGORIES.js';
@@ -9,6 +9,7 @@ import InspectFlora from './components/InspectFlora.component.js';
 import MarketButton from './components/MarketButton.component.js';
 import Market from './components/Market.component.js';
 import Music from './components/Music.component.js';
+import {hydrateGuiState, persistGuiState} from './storage.js';
 
 const guiDiv = document.getElementById('gui');
 const gameDiv = document.getElementById('game');
@@ -16,10 +17,10 @@ const gameDiv = document.getElementById('game');
 class GUI extends React.Component {
     constructor(props) {
         super(props);
+        const guiState = hydrateGuiState();
         this.state = {
-            //coins: 10,
-            coins: 1000,
-            offset: 0,
+            coins: guiState.coins,
+            offset: guiState.offset,
             marketOpen: false,
             inspectFlora: null,
         }
@@ -37,6 +38,10 @@ class GUI extends React.Component {
             pixelArt: true,
             scene: MainScene,
         });
+        setTimeout(() => {
+            const scene = this.game.scene.keys.MainScene;
+            scene.setState = this.setState.bind(this);
+        }, 1000);
         window.addEventListener('resize', this.onResize.bind(this));
         guiDiv.addEventListener('mousedown', (event) => event.stopPropagation() || false);
         guiDiv.addEventListener('mouseup', (event) => event.stopPropagation() || false);
@@ -48,7 +53,7 @@ class GUI extends React.Component {
         super.setState(updater, (...args) => {
             const scene = this.game.scene.keys.MainScene;
             scene.state = this.state;
-            scene.setState = this.setState.bind(this);
+            persistGuiState(this.state);
 
             if (callback) {
                 callback(...args);

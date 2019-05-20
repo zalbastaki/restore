@@ -205,9 +205,7 @@ function Market(props) {
 
                 <TabsBody>
                     <ArrowButton
-                        onClick={() => {
-                            setOffset(offset - 1);
-                        }}
+                        onClick={() => setOffset(offset - 1)}
                         disabled={offset === 0}
                     >
                         ↢
@@ -218,9 +216,7 @@ function Market(props) {
                             {item.name}
 
                             <ItemDetailsButton
-                                onClick={() => {
-                                    setActiveItem(item);
-                                }}
+                                onClick={() => setActiveItem(item)}
                                 onMouseOver={() => setActiveItem(item)}
                             >
                                 <ItemPreview
@@ -231,9 +227,7 @@ function Market(props) {
                             
                             <BuyButton
                                 disabled={props.coins < item.price}
-                                onClick={() => {
-                                    props.onPurchaseFlora(item);
-                                }}
+                                onClick={() => props.onPurchaseFlora(item)}
                             >
                                 <Coin /> {item.price}
                             </BuyButton>
@@ -241,9 +235,7 @@ function Market(props) {
                     ))}
 
                     <ArrowButton
-                        onClick={() => {
-                            setOffset(offset + 1);
-                        }}
+                        onClick={() => setOffset(offset + 1)}
                         disabled={offset === activeCategory.items.length - pageSize}
                     >
                         ↣
