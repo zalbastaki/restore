@@ -1,9 +1,9 @@
 const hoverIndicator = {
-    onHover(sprite) {
+    onPointerOver(sprite) {
         sprite.setTint(0x999999);
     },
 
-    onHoverOut(sprite) {
+    onPointerOut(sprite) {
         sprite.clearTint();
     },
 };

@@ -6,21 +6,21 @@ class InteractiveIsoSprite extends BaseIsoSprite {
 
         this.setInteractive();
 
-        this.on('pointerover', this.onHover, this);
-        this.on('pointerout', this.onHoverOut, this);
-        this.on('pointerdown', this.onClick, this);
+        this.on('pointerover', this.onPointerOver, this);
+        this.on('pointerout', this.onPointerOut, this);
+        this.on('pointerdown', this.onPointerDown, this);
     }
 
-    onHover() {
-        this.scene.handleEvent.call(this.scene, 'onHover', this); 
+    onPointerOver() {
+        this.scene.handleEvent.call(this.scene, 'onPointerOver', this); 
     }
 
-    onHoverOut() {
-        this.scene.handleEvent.call(this.scene, 'onHoverOut', this);
+    onPointerOut() {
+        this.scene.handleEvent.call(this.scene, 'onPointerOut', this);
     }
 
-    onClick() {
-        this.scene.handleEvent.call(this.scene, 'onClick', this);
+    onPointerDown() {
+        this.scene.handleEvent.call(this.scene, 'onPointerDown', this);
     }
 }
 

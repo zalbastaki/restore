@@ -6,14 +6,14 @@ import tillBareTileFeature from './features/tillBareTile.feature.js';
 /**
  * @example
  * prepare({
- *     onHover:'im a generic hover',
+ *     onPointerOver:'im a generic hover',
  *     SoilTile: {
- *         onClick: 'meeza soil click',
- *         onHover: 'meeza soil hoooover',
+ *         onPointerDown: 'meeza soil click',
+ *         onPointerOver: 'meeza soil hoooover',
  *     },
  * });
  * // {
- * //     onHover: 'im a generic hover',
+ * //     onPointerOver: 'im a generic hover',
  * //     onSoilTileClick: 'meeza soil click',
  * //     onSoilTileHover: 'meeza soil hoooover',
  * // }
@@ -22,10 +22,10 @@ function prepare(feature) {
     const result = {};
     for (const key of Object.keys(feature)) {
         if (key.startsWith('on')) {
-            // key is a handler (e.g. onClick)
+            // key is a handler (e.g. onPointerDown)
             result[key] = feature[key];
         } else {
-            // key is a class name (e.g. SoilTile: { onClick } )
+            // key is a class name (e.g. SoilTile: { onPointerDown } )
             const x = prepare(feature[key]);
             Object.assign(
                 result,
@@ -43,29 +43,29 @@ function prepare(feature) {
  * @example
  * merge([
  * {
- *     onHover: 'im a generic hover0',
- *     onSoilTileClick: 'meeza soil click0',
- *     onSoilTileHover: 'meeza soil hoooover0',
+ *     onPointerOver: 'im a generic hover0',
+ *     onSoilTilePointerDown: 'meeza soil click0',
+ *     onSoilTilePointerOver: 'meeza soil hoooover0',
  * },
  * {
- *     onHover: 'im a generic hover1',
- *     onBareTileClick: 'meeza bare click1',
- *     onSoilTileHover: 'meeza soil hoooover1',
+ *     onPointerOver: 'im a generic hover1',
+ *     onBareTilePointerDown: 'meeza bare click1',
+ *     onSoilTilePointerOver: 'meeza soil hoooover1',
  * }
  * ])
  * // {
- * //   "onHover": [
+ * //   "onPointerOver": [
  * //     "im a generic hover0",
  * //     "im a generic hover1"
  * //   ],
- * //   "onSoilTileClick": [
+ * //   "onSoilTilePointerDown": [
  * //     "meeza soil click0"
  * //   ],
- * //   "onSoilTileHover": [
+ * //   "onSoilTilePointerOver": [
  * //     "meeza soil hoooover0",
  * //     "meeza soil hoooover1"
  * //   ],
- * //   "onBareTileClick": [
+ * //   "onBareTilePointerDown: [
  * //     "meeza bare click1"
  * //   ]
  * // }

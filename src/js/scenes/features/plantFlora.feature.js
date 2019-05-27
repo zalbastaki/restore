@@ -12,7 +12,7 @@ const plantFlora = {
         this.add.existing(this.floraPurchased);
     },
 
-    onHover(sprite) {
+    onPointerOver(sprite) {
         if (this.floraPurchased) {
             this.floraPurchased.setTint(0xff4a02);
             this.floraPurchased.isoX = sprite.isoX;
@@ -21,13 +21,13 @@ const plantFlora = {
     },
 
     SoilTile: {
-        onHover(sprite) {
+        onPointerOver(sprite) {
             if (this.floraPurchased) {
                 this.floraPurchased.clearTint();
             }
         },
 
-        onClick(sprite) {
+        onPointerDown(sprite) {
             if (this.floraPurchased) {
                 this.floraPurchased.shouldPersist = true;
                 this.floraPurchased.setInteractive();

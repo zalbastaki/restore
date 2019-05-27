@@ -1,16 +1,16 @@
 const harvestFlora = {
     Flora: {
-        onHover(sprite) {
+        onPointerOver(sprite) {
             this.setState({
                 inspectFlora: sprite,
             });
         },
 
-        onHoverOut(sprite) {
+        onPointerOut(sprite) {
             this.setState({ inspectFlora: null });
         },
 
-        onClick(sprite) {
+        onPointerDown(sprite) {
             if (sprite.state.plantedAt) {
                 if (sprite.getGrowthProgress() === 1) {
                     sprite.growthAnimation(0);
