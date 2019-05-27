@@ -1,17 +1,6 @@
 import FloraSprite from './sprites/flora/FloraSprite.js';
 import BareTile from './sprites/tiles/BareTile.sprite.js';
-import BlankTile from './sprites/tiles/BlankTile.sprite.js';
-import SoilTile from './sprites/tiles/SoilTile.sprite.js';
-import BlueberryPlant from './sprites/flora/BlueberryPlant.sprite.js';
-import CatnipPlant from './sprites/flora/CatnipPlant.sprite.js';
-import CherryTree from './sprites/flora/CherryTree.sprite.js';
-import MagnoliaTree from './sprites/flora/MagnoliaTree.sprite.js';
-import OakTree from './sprites/flora/OakTree.sprite.js';
-import StrawberryPlant from './sprites/flora/StrawberryPlant.sprite.js';
-import SunflowerPlant from './sprites/flora/SunflowerPlant.sprite.js';
-import SweetPeaPlant from './sprites/flora/SweetPeaPlant.sprite.js';
-import TomatoPlant from './sprites/flora/TomatoPlant.sprite.js';
-import WatermelonPlant from './sprites/flora/WatermelonPlant.sprite.js';
+import spriteFactory from './sprites/spriteFactory.js';
 
 const SAVE_ENABLED = true;
 
@@ -54,21 +43,7 @@ function persistGuiState(state) {
 function deserializeGameState(state) {
     return {
         sprites: state.sprites.map((sprite) => {
-            const ItemSprite = {
-                BareTile,
-                BlankTile,
-                SoilTile,
-                BlueberryPlant,
-                CatnipPlant,
-                CherryTree,
-                MagnoliaTree,
-                OakTree,
-                StrawberryPlant,
-                SunflowerPlant,
-                SweetPeaPlant,
-                TomatoPlant,
-                WatermelonPlant,
-            }[sprite.type];
+            const ItemSprite = spriteFactory[sprite.type];
             const result = new ItemSprite(this, sprite.isoX, sprite.isoY, sprite.props);
             result.state = sprite.state;
             if (result instanceof FloraSprite) {
@@ -90,8 +65,7 @@ function persistGameState(scene) {
     if (SAVE_ENABLED && scene.children.list.length > 0) {
         localStorage.setItem('gameState', JSON.stringify({
             sprites: scene.children.list
-                // HACK: We don't want to save the plant in the player's hand.
-                .filter(sprite => sprite.alpha === 1)
+                .filter(sprite => sprite.shouldPersist)
                 .map((sprite) => ({
                     type: sprite.type,
                     isoX: sprite.isoX,

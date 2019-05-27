@@ -1,33 +1,12 @@
 import FLORA from '../../FLORA.js';
-import CherryTree from '../../sprites/flora/CherryTree.sprite.js';
-import MagnoliaTree from '../../sprites/flora/MagnoliaTree.sprite.js';
-import OakTree from '../../sprites/flora/OakTree.sprite.js';
-import BlueberryPlant from '../../sprites/flora/BlueberryPlant.sprite.js';
-import CatnipPlant from '../../sprites/flora/CatnipPlant.sprite.js';
-import StrawberryPlant from '../../sprites/flora/StrawberryPlant.sprite.js';
-import SunflowerPlant from '../../sprites/flora/SunflowerPlant.sprite.js';
-import SweetPeaPlant from '../../sprites/flora/SweetPeaPlant.sprite.js';
-import TomatoPlant from '../../sprites/flora/TomatoPlant.sprite.js';
-import WatermelonPlant from '../../sprites/flora/WatermelonPlant.sprite.js';
-
-const floraSprite = {
-    CherryTree,
-    MagnoliaTree,
-    OakTree,
-    BlueberryPlant,
-    CatnipPlant,
-    StrawberryPlant,
-    SunflowerPlant,
-    SweetPeaPlant,
-    TomatoPlant,
-    WatermelonPlant,
-};
+import spriteFactory from '../../sprites/spriteFactory.js';
 
 const plantFlora = {
     onPurchaseFlora(item) {
-        const ItemSprite = floraSprite[item.className];
+        const ItemSprite = spriteFactory[item.className];
         const props = FLORA[item.className];
         this.floraPurchased = new ItemSprite(this, Infinity, Infinity, props);
+        this.floraPurchased.shouldPersist = false;
         this.floraPurchased.disableInteractive();
         this.floraPurchased.alpha = 0.75;
         this.add.existing(this.floraPurchased);
@@ -50,6 +29,7 @@ const plantFlora = {
 
         onClick(sprite) {
             if (this.floraPurchased) {
+                this.floraPurchased.shouldPersist = true;
                 this.floraPurchased.setInteractive();
                 this.floraPurchased.clearTint();
                 this.floraPurchased.isoX = sprite.isoX;

@@ -1,9 +1,8 @@
-import { IsoSprite } from 'phaser3-plugin-isometric';
+import BaseIsoSprite from './BaseIsoSprite.js';
 
-class InteractiveIsoSprite extends IsoSprite {
+class InteractiveIsoSprite extends BaseIsoSprite {
     constructor(scene, x, y, z, key, frame) {
         super(scene, x, y, z, key, frame);
-        this.type = this.constructor.name;
 
         this.setInteractive();
 
