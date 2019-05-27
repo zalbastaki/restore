@@ -2,8 +2,8 @@ import FloraSprite from './FloraSprite.js';
 import TOMATO_PLANT_ASSET from '../../../assets/flora/tomato.png';
 
 class TomatoPlant extends FloraSprite {
-    constructor(scene, x, y, props) {
-        super(scene, x, y, 'TOMATO_PLANT', props);
+    constructor(scene, x, y, props, state) {
+        super(scene, x, y, 'TOMATO_PLANT', props, state);
     }
 }
 

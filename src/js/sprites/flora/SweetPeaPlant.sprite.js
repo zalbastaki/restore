@@ -2,8 +2,8 @@ import FloraSprite from './FloraSprite.js';
 import SWEETPEA_PLANT_ASSET from '../../../assets/flora/sweetpea.png';
 
 class SweetPeaPlant extends FloraSprite {
-    constructor(scene, x, y, props) {
-        super(scene, x, y, 'SWEETPEA_PLANT', props);
+    constructor(scene, x, y, props, state) {
+        super(scene, x, y, 'SWEETPEA_PLANT', props, state);
     }
 }
 

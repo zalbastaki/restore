@@ -2,8 +2,8 @@ import FloraSprite from './FloraSprite.js';
 import CATNIP_PLANT_ASSET from '../../../assets/flora/catnip.png';
 
 class CatnipPlant extends FloraSprite {
-    constructor(scene, x, y, props) {
-        super(scene, x, y, 'CATNIP_PLANT', props);
+    constructor(scene, x, y, props, state) {
+        super(scene, x, y, 'CATNIP_PLANT', props, state);
     }
 }
 

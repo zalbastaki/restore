@@ -2,8 +2,8 @@ import FloraSprite from './FloraSprite.js';
 import MAGNOLIA_TREE_ASSET from '../../../assets/flora/magnolia.png';
 
 class MagnoliaTree extends FloraSprite {
-    constructor(scene, x, y, props) {
-        super(scene, x, y, 'MAGNOLIA_TREE', props);
+    constructor(scene, x, y, props, state) {
+        super(scene, x, y, 'MAGNOLIA_TREE', props, state);
     }
 }
 

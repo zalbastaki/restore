@@ -2,8 +2,8 @@ import FloraSprite from './FloraSprite.js';
 import STRAWBERRY_PLANT_ASSET from '../../../assets/flora/strawberry.png';
 
 class StrawberryPlant extends FloraSprite {
-    constructor(scene, x, y, props) {
-        super(scene, x, y, 'STRAWBERRY_PLANT', props);
+    constructor(scene, x, y, props, state) {
+        super(scene, x, y, 'STRAWBERRY_PLANT', props, state);
     }
 }
 

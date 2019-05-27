@@ -1,8 +1,8 @@
 import BaseIsoSprite from './BaseIsoSprite.js';
 
 class InteractiveIsoSprite extends BaseIsoSprite {
-    constructor(scene, x, y, z, key, frame) {
-        super(scene, x, y, z, key, frame);
+    constructor(scene, x, y, z, key, props, state) {
+        super(scene, x, y, z, key, props, state);
 
         this.setInteractive();
 

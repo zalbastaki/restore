@@ -44,11 +44,7 @@ function deserializeGameState(state) {
     return {
         sprites: state.sprites.map((sprite) => {
             const ItemSprite = spriteFactory[sprite.type];
-            const result = new ItemSprite(this, sprite.isoX, sprite.isoY, sprite.props);
-            result.state = sprite.state;
-            if (result instanceof FloraSprite) {
-                result.growthAnimation(result.getGrowthProgress());
-            }
+            const result = new ItemSprite(this, sprite.isoX, sprite.isoY, sprite.props, sprite.state);
             return result;
         }),
     };

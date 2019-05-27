@@ -2,8 +2,8 @@ import FloraSprite from './FloraSprite.js';
 import WATERMELON_PLANT_ASSET from '../../../assets/flora/watermelon.png';
 
 class WatermelonPlant extends FloraSprite {
-    constructor(scene, x, y, props) {
-        super(scene, x, y, 'WATERMELON_PLANT', props);
+    constructor(scene, x, y, props, state) {
+        super(scene, x, y, 'WATERMELON_PLANT', props, state);
     }
 }
 

@@ -2,8 +2,8 @@ import FloraSprite from './FloraSprite.js';
 import BLUEBERRY_PLANT_ASSET from '../../../assets/flora/blueberry.png';
 
 class BlueberryPlant extends FloraSprite {
-    constructor(scene, x, y, props) {
-        super(scene, x, y, 'BLUEBERRY_PLANT', props);
+    constructor(scene, x, y, props, state) {
+        super(scene, x, y, 'BLUEBERRY_PLANT', props, state);
     }
 }
 

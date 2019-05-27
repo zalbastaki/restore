@@ -6,14 +6,14 @@ function snakeUpperCase(str) {
 }
 
 class FloraSprite extends InteractiveIsoSprite {
-    constructor(scene, x, y, key, props) {
-        super(scene, x, y, 0, key, undefined);
-        this.props = props;
-        this.state = {};
+    constructor(scene, x, y, key, props, state) {
+        super(scene, x, y, 0, key, props, state);
+
+        this.growthAnimation(this.getGrowthProgress());
     }
 
     growthAnimation(progress) {
-        const key = snakeUpperCase(this.constructor.name) + '_GROWTH';
+        const key = snakeUpperCase(this.type) + '_GROWTH';
         this.play(key, false, 0);
         
         const frames = this.anims.getTotalFrames();
